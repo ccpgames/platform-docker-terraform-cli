@@ -1,6 +1,8 @@
 FROM golang:1.11-alpine3.9
 
-RUN apk update && apk add git ca-certificates
+RUN apk update && \
+    apk add git openssh ca-certificates && \
+    rm /var/cache/apk/*
 
 RUN git clone --depth 1 -b v0.11.14 https://github.com/hashicorp/terraform.git /go/src/github.com/hashicorp/terraform
 
